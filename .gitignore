@@ -1,0 +1,9 @@
+.env
+.env.*
+*.key
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+*.csv
+.DS_Store
