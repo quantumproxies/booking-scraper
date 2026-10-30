@@ -1,0 +1,127 @@
+{
+ "cli": "booking-scraper",
+ "name": "Booking.com Scraper",
+ "version": "0.1.0",
+ "description": "Booking scraper for Python and the command line: Booking.com hotels and apartments around a city or street address for your dates, with stay price, price per night, discount, review score, stars, distance and free-cancellation flag, as JSON or CSV. Free and open source; sign in with your QuanticData account, no proxies or headless browser to run.",
+ "links": {
+  "repo": "https://github.com/quantumproxies/booking-scraper",
+  "page": "https://quanticdata.io/collectors/booking-com-scraper-api/?utm_source=github&utm_medium=cli&utm_campaign=booking-scraper",
+  "billing": "https://app.quanticdata.io/billing?utm_source=github&utm_medium=cli&utm_campaign=booking-scraper",
+  "pricing": "https://quanticdata.io/pricing/?utm_source=github&utm_medium=cli&utm_campaign=booking-scraper"
+ },
+ "commands": [
+  {
+   "name": "search",
+   "collector": "booking_stays",
+   "method": "search",
+   "help": "Booking.com properties around a place or address for your dates",
+   "description": "Booking.com properties around a place or address for your dates — price, discount, distance, badges, review score.",
+   "positional": "location",
+   "positional_is_list": false,
+   "positional_optional": true,
+   "columns": [
+    "rank",
+    "name",
+    "price_value",
+    "price_per_night",
+    "review_score",
+    "review_count",
+    "stars",
+    "distance_m"
+   ],
+   "sample": "booking_stays",
+   "inputs": [
+    {
+     "name": "location",
+     "type": "string",
+     "required": false,
+     "description": "City, area or street address, e.g. \"Roma, Italia\" or \"12 Marine Parade, Napier, New Zealand\". Resolved to coordinates first; pass latitude/longitude instead to skip that step.",
+     "arg": "location"
+    },
+    {
+     "name": "latitude",
+     "type": "number",
+     "required": false,
+     "description": "Alternative to location.",
+     "min": -90,
+     "max": 90,
+     "arg": "latitude"
+    },
+    {
+     "name": "longitude",
+     "type": "number",
+     "required": false,
+     "description": "Alternative to location.",
+     "min": -180,
+     "max": 180,
+     "arg": "longitude"
+    },
+    {
+     "name": "check_in_date",
+     "type": "string",
+     "required": true,
+     "description": "Check-in date, YYYY-MM-DD.",
+     "arg": "check_in_date"
+    },
+    {
+     "name": "check_out_date",
+     "type": "string",
+     "required": true,
+     "description": "Check-out date, YYYY-MM-DD (after check-in).",
+     "arg": "check_out_date"
+    },
+    {
+     "name": "adults",
+     "type": "integer",
+     "required": false,
+     "description": "Guests (1-30).",
+     "min": 1,
+     "max": 30,
+     "default": 2,
+     "arg": "adults"
+    },
+    {
+     "name": "rooms",
+     "type": "integer",
+     "required": false,
+     "description": "Rooms (1-10).",
+     "min": 1,
+     "max": 10,
+     "default": 1,
+     "arg": "rooms"
+    },
+    {
+     "name": "currency",
+     "type": "string",
+     "required": false,
+     "description": "Price currency (EUR, USD, NZD...).",
+     "arg": "currency"
+    },
+    {
+     "name": "country",
+     "type": "string",
+     "required": false,
+     "description": "Country to run the request from, as an ISO 3166-1 alpha-2 code (us, gb, de...).",
+     "arg": "country"
+    },
+    {
+     "name": "lang",
+     "type": "string",
+     "required": false,
+     "description": "Interface language, e.g. en, it, de.",
+     "arg": "lang"
+    },
+    {
+     "name": "max_results",
+     "type": "integer",
+     "required": false,
+     "description": "How many properties to deliver at most (1–100). You pay only for delivered properties.",
+     "min": 1,
+     "max": 100,
+     "default": 20,
+     "arg": "max_results"
+    }
+   ]
+  }
+ ]
+}
